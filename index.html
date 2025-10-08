@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WellNest — Health & Mood Check</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body id="index-page">
+  <header>
+    <div class="logo"><span class="leaf">🌿</span><span>WellNest</span></div>
+    <nav id="main-nav">
+      <a href="#" id="nav-home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#insights">Insights</a>
+      <a href="#blog">Blog</a>
+      <a href="#" id="auth-link">Log In</a>
+    </nav>
+  </header>
+
+  <main class="container" id="main-container">
+    <!-- Landing content (visible when not logged in) -->
+    <section class="hero" id="landing-hero">
+      <div class="hero-card">
+        <div class="chip">New • 7-day mood insights</div>
+        <h1>Check in with your body and mind.</h1>
+        <p class="lead">A simple, supportive way to track daily mood & health. Build self-awareness over time with gentle reminders and personalized insights.</p>
+        <a class="cta" id="startBtnLanding">Start Your Free Check-In</a>
+
+        <div class="summary">
+          <div>
+            <strong class="muted">Weekly average</strong>
+            <div id="weeklyAvgLanding" class="big-text">—</div>
+          </div>
+          <div>
+            <strong class="muted">Last entry</strong>
+            <div id="lastEntryLanding" class="muted">—</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tracker hero-card landing-tracker">
+        <strong>Today’s Check-In (Demo)</strong>
+        <div class="small muted">Tap an emoji that matches how you feel</div>
+        <div class="mood-scale" id="moodScaleLanding">
+          <div class="mood-btn" data-value="1">😞<div class="small muted">1</div></div>
+          <div class="mood-btn" data-value="2">😕<div class="small muted">2</div></div>
+          <div class="mood-btn" data-value="3">😐<div class="small muted">3</div></div>
+          <div class="mood-btn" data-value="4">🙂<div class="small muted">4</div></div>
+          <div class="mood-btn" data-value="5">😃<div class="small muted">5</div></div>
+        </div>
+
+        <div class="symptom-area">
+          <div class="small muted">Symptoms</div>
+          <div class="symptoms">
+            <label class="symptom"><input type="checkbox" disabled> Fatigue</label>
+            <label class="symptom"><input type="checkbox" disabled> Headache</label>
+            <label class="symptom"><input type="checkbox" disabled> Stress</label>
+          </div>
+        </div>
+
+        <textarea disabled placeholder="Sign up to save full entries — demo only."></textarea>
+        <div class="buttons">
+          <button class="cta" id="goSignup">Sign up</button>
+          <button class="outline" id="goLogin">Log in</button>
+        </div>
+
+        <canvas id="weeklyChartLanding" width="360" height="120"></canvas>
+      </aside>
+    </section>
+
+    <!-- Dashboard (visible when logged in) -->
+    <section class="hero" id="dashboard" style="display:none">
+      <div class="hero-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div class="chip" id="welcomeChip">Welcome</div>
+            <h1 id="dashboardTitle">Your WellNest Dashboard</h1>
+            <p class="lead">Today’s check-in and recent trends. Your data is stored locally in your browser.</p>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="outline" id="addTestimonialBtn">Add Testimonial</button>
+            <button class="cta" id="logoutBtn">Log Out</button>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;display:flex;gap:12px;align-items:center">
+          <div>
+            <strong class="muted">Weekly average</strong>
+            <div id="weeklyAvg" class="big-text">—</div>
+          </div>
+          <div>
+            <strong class="muted">Last entry</strong>
+            <div id="lastEntry" class="muted">—</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tracker hero-card">
+        <strong>Today’s Check-In</strong>
+        <div class="small muted">Tap an emoji that matches how you feel</div>
+        <div class="mood-scale" id="moodScale">
+          <div class="mood-btn" data-value="1">😞<div class="small muted">1</div></div>
+          <div class="mood-btn" data-value="2">😕<div class="small muted">2</div></div>
+          <div class="mood-btn" data-value="3">😐<div class="small muted">3</div></div>
+          <div class="mood-btn" data-value="4">🙂<div class="small muted">4</div></div>
+          <div class="mood-btn" data-value="5">😃<div class="small muted">5</div></div>
+        </div>
+
+        <div class="symptom-area">
+          <div class="small muted">Symptoms</div>
+          <div class="symptoms" id="symptomList">
+            <label class="symptom"><input type="checkbox" value="Fatigue"> Fatigue</label>
+            <label class="symptom"><input type="checkbox" value="Headache"> Headache</label>
+            <label class="symptom"><input type="checkbox" value="Stress"> Stress</label>
+            <label class="symptom"><input type="checkbox" value="Nausea"> Nausea</label>
+            <label class="symptom"><input type="checkbox" value="Insomnia"> Insomnia</label>
+          </div>
+        </div>
+
+        <textarea id="notes" placeholder="Notes — what happened today? triggers, medication, sleep..."></textarea>
+        <div class="buttons">
+          <button id="saveBtn" class="cta">Save Check-In</button>
+          <button id="clearBtn" class="outline">Clear</button>
+        </div>
+
+        <canvas id="weeklyChart" width="360" height="120"></canvas>
+      </aside>
+    </section>
+
+    <section id="features">
+      <h2>Features</h2>
+      <div class="features">
+        <div class="feature">✅ Daily Mood & Symptom Logging</div>
+        <div class="feature">📅 Weekly & Monthly Progress Charts</div>
+        <div class="feature">🔔 Smart Reminders for Daily Check-ins</div>
+        <div class="feature">🔒 Encrypted Local Data (demo)</div>
+        <div class="feature">🤖 Personalized Wellness Insights</div>
+        <div class="feature">📱 Mobile-First Friendly UI</div>
+      </div>
+    </section>
+
+    <section class="testimonials-section">
+      <h2>What people are saying</h2>
+      <div class="testimonials" id="testimonialsWrap"></div>
+      <div style="margin-top:8px;display:flex;gap:8px">
+        <button id="prevT">◀</button>
+        <button id="nextT">▶</button>
+      </div>
+    </section>
+
+    <section class="newsletter-section">
+      <h3>Subscribe for tips</h3>
+      <div class="newsletter">
+        <input id="email" placeholder="you@email.com" />
+        <button id="subscribe">Subscribe</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>Privacy Policy • Terms • Contact</div>
+    <div>© 2025 WellNest</div>
+  </footer>
+
+  <div id="modal" class="modal" style="display:none">
+    <div class="modal-card">
+      <h3 id="modalTitle">Add testimonial</h3>
+      <textarea id="modalText" placeholder="Write a short testimonial (max 200 chars)"></textarea>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+        <button id="modalCancel" class="outline">Cancel</button>
+        <button id="modalSave" class="cta">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
