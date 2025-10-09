@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WellNest Insights 🌿</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">🌿 WellNest</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="insights.html" class="active">Insights</a>
+      <a href="blog.html">Blog</a>
+      <a href="login.html">Log In</a>
+    </nav>
+  </header>
+
+  <section class="insights-hero">
+    <h1>Your Wellness Insights</h1>
+    <p>Understand your mood and health trends over time.</p>
+  </section>
+
+  <section class="charts-section">
+    <div class="chart-container">
+      <h2>Weekly Mood Tracker</h2>
+      <canvas id="moodChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <h2>Common Symptoms Logged</h2>
+      <canvas id="symptomChart"></canvas>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 WellNest | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
