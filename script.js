@@ -359,3 +359,49 @@ function openTestimonialModal(username) {
   document.getElementById('modalText').value = '';
   modal.style.display = 'flex';
 }
+
+// INSIGHTS PAGE CHARTS
+
+// Mood Chart
+const moodCanvas = document.getElementById('moodChart');
+if (moodCanvas) {
+  new Chart(moodCanvas, {
+    type: 'line',
+    data: {
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      datasets: [{
+        label: 'Mood Level 😊',
+        data: [3, 4, 2, 5, 4, 5, 3],
+        borderColor: '#4db6ac',
+        backgroundColor: 'rgba(77,182,172,0.2)',
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { min: 1, max: 5 }
+      }
+    }
+  });
+}
+
+// Symptom Chart
+const symptomCanvas = document.getElementById('symptomChart');
+if (symptomCanvas) {
+  new Chart(symptomCanvas, {
+    type: 'doughnut',
+    data: {
+      labels: ['Stress', 'Fatigue', 'Headache', 'Anxiety'],
+      datasets: [{
+        label: 'Symptoms',
+        data: [35, 25, 20, 20],
+        backgroundColor: ['#81c784', '#4db6ac', '#64b5f6', '#ba68c8']
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+}
